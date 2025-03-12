@@ -1,22 +1,20 @@
 class Solution {
-    public:
-        vector<int> twoSum(vector<int>& nums, int target) {
-            int size = nums.size();
-            vector<int> result(2);
-            bool res=false;
-            int i=0;
-            int j=0;
-            for( i =0; i< size; i++){
-                for( j=1; j<size ; j++){
-            if(i!=j && nums[j]+nums[i]==target){
-                    result[0]=i;
-                    result[1]=j;
-                    res= true;
-                }
-            }
-            if(res==true){break;}
-            }
-            return result;
-    
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+    nums1.insert(nums1.end(), nums2.begin(), nums2.end());
+        sort(nums1.begin(), nums1.end());
+        int size = nums1.size();
+        double  med=0.0;
+        int index=0;
+        if(size%2==0){
+            index = size/2;
+            med = (nums1[index-1] + nums1[index])/2.0;
         }
-    };
+        else{
+            med=nums1[size/2];
+        }
+
+        return med;
+        
+    }
+};
