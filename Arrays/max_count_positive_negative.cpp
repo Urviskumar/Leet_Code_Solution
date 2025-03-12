@@ -1,22 +1,21 @@
 class Solution {
-    public:
-        vector<int> twoSum(vector<int>& nums, int target) {
-            int size = nums.size();
-            vector<int> result(2);
-            bool res=false;
-            int i=0;
-            int j=0;
-            for( i =0; i< size; i++){
-                for( j=1; j<size ; j++){
-            if(i!=j && nums[j]+nums[i]==target){
-                    result[0]=i;
-                    result[1]=j;
-                    res= true;
-                }
+public:
+    int maximumCount(vector<int>& nums) {
+        int size = nums.size();
+        int pos_count=0;
+        int neg_count=0;
+        int result =0;
+        for( int i =0; i< size ; i++){
+            if(nums[i]>0){
+                pos_count++;
+                    
             }
-            if(res==true){break;}
+            else if(nums[i]<0) {
+                neg_count++;
             }
-            return result;
-    
         }
-    };
+            result = max(neg_count, pos_count);
+            return result;
+
+    }
+};
